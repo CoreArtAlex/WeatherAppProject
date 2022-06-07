@@ -1,0 +1,12 @@
+@use '_currentWeather';
+@import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Cookie&family=Courgette&family=Montserrat:wght@100&family=Nunito+Sans:wght@200&display=swap");
+
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+  }
+  body {
+    background-color: hsl(207, 26%, 17%);
+  }
