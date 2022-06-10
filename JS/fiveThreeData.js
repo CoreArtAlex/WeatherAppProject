@@ -38,12 +38,13 @@ const convertDay = (value) => {
 }
 
 class dayForecast {
-  constructor(time, temp, feelsLike, description) {
+  constructor(time, temp, feelsLike, description, icon) {
 
     this.time = time;
     this.temp = temp;
     this.feelsLike = feelsLike;
     this.description = description;
+    this.icon = icon
   }
 }
 
@@ -70,13 +71,13 @@ async function getFiveThreeData() {
 
     let date = new Date(element.dt * 1000)
 
-
-
     switch (date.getDate()) {
       case currentDay:
         fiveThreeData.Day0.date = date.getDate()
         fiveThreeData.Day0.day = convertDay(date.getDay())
-        let day0Forecast = new dayForecast(`${date.getHours()}:${date.getMinutes()}`, element.main.temp, element.main.feels_like, element.weather[0].description)
+
+        let day0Forecast = new dayForecast(`${date.getHours()}:00`, element.main.temp, element.main.feels_like, element.weather[0].description, element.weather[0].icon)
+
         if (element.main.temp_max > fiveThreeData.Day0.dayHigh || fiveThreeData.Day0.dayHigh == null) {
           fiveThreeData.Day0.dayHigh = element.main.temp_max
         }
@@ -84,59 +85,76 @@ async function getFiveThreeData() {
           fiveThreeData.Day0.dayLow = element.main.temp_min
         }
 
-        fiveThreeData.Day0[`Time ${date.getHours()}:${date.getMinutes()}`] = day0Forecast
+        fiveThreeData.Day0[`Time ${date.getHours()}:00`] = day0Forecast
+
         break;
 
       case currentDay + 1:
         fiveThreeData.Day1.date = date.getDate()
         fiveThreeData.Day1.day = convertDay(date.getDay())
-        let day1Forecast = new dayForecast(`${date.getHours()}:${date.getMinutes()}`, element.main.temp, element.main.feels_like, element.weather[0].description)
+
+        let day1Forecast = new dayForecast(`${date.getHours()}:00`, element.main.temp, element.main.feels_like, element.weather[0].description, element.weather[0].icon)
+
         if (element.main.temp_max > fiveThreeData.Day0.dayHigh || fiveThreeData.Day1.dayHigh == null) {
           fiveThreeData.Day1.dayHigh = element.main.temp_max
         }
         if (element.main.temp_min < fiveThreeData.Day1.dayLow || fiveThreeData.Day1.dayLow == null) {
           fiveThreeData.Day1.dayLow = element.main.temp_min
         }
-        fiveThreeData.Day1[`Time ${date.getHours()}:${date.getMinutes()}`] = day1Forecast
+
+        fiveThreeData.Day1[`Time ${date.getHours()}:00`] = day1Forecast
+
         break;
 
       case currentDay + 2:
         fiveThreeData.Day2.date = date.getDate()
         fiveThreeData.Day2.day = convertDay(date.getDay())
-        let day2Forecast = new dayForecast(`${date.getHours()}:${date.getMinutes()}`, element.main.temp, element.main.feels_like, element.weather[0].description)
+
+        let day2Forecast = new dayForecast(`${date.getHours()}:00`, element.main.temp, element.main.feels_like, element.weather[0].description, element.weather[0].icon)
+
         if (element.main.temp_max > fiveThreeData.Day0.dayHigh || fiveThreeData.Day2.dayHigh == null) {
           fiveThreeData.Day2.dayHigh = element.main.temp_max
         }
         if (element.main.temp_min < fiveThreeData.Day2.dayLow || fiveThreeData.Day2.dayLow == null) {
           fiveThreeData.Day2.dayLow = element.main.temp_min
         }
-        fiveThreeData.Day2[`Time ${date.getHours()}:${date.getMinutes()}`] = day2Forecast
+
+        fiveThreeData.Day2[`Time ${date.getHours()}:00`] = day2Forecast
+
         break;
 
       case currentDay + 3:
         fiveThreeData.Day3.date = date.getDate()
         fiveThreeData.Day3.day = convertDay(date.getDay())
-        let day3Forecast = new dayForecast(`${date.getHours()}:${date.getMinutes()}`, element.main.temp, element.main.feels_like, element.weather[0].description)
+
+        let day3Forecast = new dayForecast(`${date.getHours()}:00`, element.main.temp, element.main.feels_like, element.weather[0].description, element.weather[0].icon)
+
         if (element.main.temp_max > fiveThreeData.Day0.dayHigh || fiveThreeData.Day3.dayHigh == null) {
           fiveThreeData.Day3.dayHigh = element.main.temp_max
         }
         if (element.main.temp_min < fiveThreeData.Day3.dayLow || fiveThreeData.Day3.dayLow == null) {
           fiveThreeData.Day3.dayLow = element.main.temp_min
         }
-        fiveThreeData.Day3[`Time ${date.getHours()}:${date.getMinutes()}`] = day3Forecast
+
+        fiveThreeData.Day3[`Time ${date.getHours()}:00`] = day3Forecast
+
         break;
 
       case currentDay + 4:
         fiveThreeData.Day4.date = date.getDate()
         fiveThreeData.Day4.day = convertDay(date.getDay())
-        let day4Forecast = new dayForecast(`${date.getHours()}:${date.getMinutes()}`, element.main.temp, element.main.feels_like, element.weather[0].description)
+
+        let day4Forecast = new dayForecast(`${date.getHours()}:00`, element.main.temp, element.main.feels_like, element.weather[0].description, element.weather[0].icon)
+
         if (element.main.temp_max > fiveThreeData.Day0.dayHigh || fiveThreeData.Day4.dayHigh == null) {
           fiveThreeData.Day4.dayHigh = element.main.temp_max
         }
         if (element.main.temp_min < fiveThreeData.Day4.dayLow || fiveThreeData.Day4.dayLow == null) {
           fiveThreeData.Day4.dayLow = element.main.temp_min
         }
-        fiveThreeData.Day4[`Time ${date.getHours()}:${date.getMinutes()}`] = day4Forecast
+
+        fiveThreeData.Day4[`Time ${date.getHours()}:00`] = day4Forecast
+
         break;
     }
 
