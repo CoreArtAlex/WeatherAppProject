@@ -3,25 +3,13 @@
 // dotenv.config()
 import WeatherAPIKey from './APIKEY.js'
 
-// localStorage.clear()
-console.log(localStorage.length)
+// // localStorage.clear()
+// console.log(localStorage.length)
 
-let favBtn  = document.querySelector('#fav-btn')
-let favCitiesList = document.querySelector('#favorite-cities-list')
+// setInterval(() => {
+//   console.log(coords)  
+// }, 2000);
 
-favBtn.addEventListener('click', ()=>{
-  localStorage.setItem('CurrentCity' , JSON.stringify({name:'Current City', lat: 19.432608, long:-99.133209}))
-  let itemLink = document.createElement('a')
-  itemLink.classList.add('dropdown-item')
-  itemLink.setAttribute('href', '#')
-  itemLink.setAttribute('id', `${JSON.parse(localStorage.getItem(localStorage.key(0))).name}`)
-  itemLink.innerHTML = `${JSON.parse(localStorage.getItem(localStorage.key(0))).name}`
-
-  let item = document.createElement('li')
-  item.appendChild(itemLink)
-  
-  favCitiesList.appendChild(item)
-})
 
 const fetchData = async (info) => {
   let allData = await fetch(info)
@@ -41,6 +29,9 @@ const setAPIURL = (lat, long) => {
 
   return url
 }
+
+let url = setAPIURL();
+
 
 const convertDay = (value) => {
   switch (value) {
@@ -72,8 +63,7 @@ class dayForecast {
   }
 }
 
-
-async function getFiveThreeData() {
+export default async function getFiveThreeData(lat, long) {
 
   let fiveThreeData = {
     Day0: { dayHigh: null, dayLow: null, day: null, date: null },
@@ -82,8 +72,7 @@ async function getFiveThreeData() {
     Day3: { dayHigh: null, dayLow: null, day: null, date: null },
     Day4: { dayHigh: null, dayLow: null, day: null, date: null }
   }
-
-  let url = setAPIURL();
+  url = setAPIURL(lat,long)
   let rawFiveThreeData = await fetchData(url)
 
   const currentTimestamp = new Date(rawFiveThreeData.list[0].dt * 1000)
@@ -187,10 +176,9 @@ async function getFiveThreeData() {
   return fiveThreeData
 }
 
+// data = await getFiveThreeData()
 
-
-const data = await getFiveThreeData()
-export default { data }
+// export default { data }
 
 
 
