@@ -33,14 +33,14 @@ export default class createHourCards{
 
     this.#temp = document.createElement('div')
     this.#temp.classList.add('col-12', 'd-flex', 'justify-content-center')
-    this.#temp.innerHTML = 'Temp &nbsp;'
+    this.#temp.innerHTML = 'Temp'
     this.#tempSpan = document.createElement('span')
     this.#tempSpan.id = `h${hourNumber}-temp`
     this.#temp.appendChild(this.#tempSpan)
 
     this.#feelsLike = document.createElement('div')
     this.#feelsLike.classList.add('col-12', 'd-flex', 'justify-content-center')
-    this.#feelsLike.innerHTML = 'Feels like &nbsp;'
+    this.#feelsLike.innerHTML = 'Feels like'
     this.#feelsLikeSpan = document.createElement('span')
     this.#feelsLikeSpan.id = `h${hourNumber}-feelsLike`
     this.#feelsLike.appendChild(this.#feelsLikeSpan)

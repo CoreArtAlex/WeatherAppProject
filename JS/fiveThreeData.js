@@ -1,5 +1,27 @@
 // import fetch from 'node-fetch';
-import WeatherAPIKey from './APIKey.js'
+// import dotenv from './node_modules/dotenv'
+// dotenv.config()
+import WeatherAPIKey from './APIKEY.js'
+
+// localStorage.clear()
+console.log(localStorage.length)
+
+let favBtn  = document.querySelector('#fav-btn')
+let favCitiesList = document.querySelector('#favorite-cities-list')
+
+favBtn.addEventListener('click', ()=>{
+  localStorage.setItem('CurrentCity' , JSON.stringify({name:'Current City', lat: 19.432608, long:-99.133209}))
+  let itemLink = document.createElement('a')
+  itemLink.classList.add('dropdown-item')
+  itemLink.setAttribute('href', '#')
+  itemLink.setAttribute('id', `${JSON.parse(localStorage.getItem(localStorage.key(0))).name}`)
+  itemLink.innerHTML = `${JSON.parse(localStorage.getItem(localStorage.key(0))).name}`
+
+  let item = document.createElement('li')
+  item.appendChild(itemLink)
+  
+  favCitiesList.appendChild(item)
+})
 
 const fetchData = async (info) => {
   let allData = await fetch(info)
@@ -8,10 +30,12 @@ const fetchData = async (info) => {
   return allDataJson
 }
 
-const setAPIURL = () => {
+const setAPIURL = (lat, long) => {
 
-  let lat = '49.2608724'
-  let long = '-123.113952'
+  if(lat == null || long == null){
+    lat = 49.2608724;
+    long = -123.113952
+  }
   let keyData = Object.values(WeatherAPIKey)
   let url = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${keyData}&units=metric`
 
@@ -65,7 +89,7 @@ async function getFiveThreeData() {
   const currentTimestamp = new Date(rawFiveThreeData.list[0].dt * 1000)
   const currentDay = currentTimestamp.getDate()
 
-  console.log(rawFiveThreeData.list)
+  console.log(rawFiveThreeData)
 
   rawFiveThreeData.list.forEach((element) => {
 
@@ -95,7 +119,7 @@ async function getFiveThreeData() {
 
         let day1Forecast = new dayForecast(`${date.getHours()}:00`, element.main.temp, element.main.feels_like, element.weather[0].description, element.weather[0].icon)
 
-        if (element.main.temp_max > fiveThreeData.Day0.dayHigh || fiveThreeData.Day1.dayHigh == null) {
+        if (element.main.temp_max > fiveThreeData.Day1.dayHigh || fiveThreeData.Day1.dayHigh == null) {
           fiveThreeData.Day1.dayHigh = element.main.temp_max
         }
         if (element.main.temp_min < fiveThreeData.Day1.dayLow || fiveThreeData.Day1.dayLow == null) {
@@ -112,7 +136,7 @@ async function getFiveThreeData() {
 
         let day2Forecast = new dayForecast(`${date.getHours()}:00`, element.main.temp, element.main.feels_like, element.weather[0].description, element.weather[0].icon)
 
-        if (element.main.temp_max > fiveThreeData.Day0.dayHigh || fiveThreeData.Day2.dayHigh == null) {
+        if (element.main.temp_max > fiveThreeData.Day2.dayHigh || fiveThreeData.Day2.dayHigh == null) {
           fiveThreeData.Day2.dayHigh = element.main.temp_max
         }
         if (element.main.temp_min < fiveThreeData.Day2.dayLow || fiveThreeData.Day2.dayLow == null) {
@@ -129,7 +153,7 @@ async function getFiveThreeData() {
 
         let day3Forecast = new dayForecast(`${date.getHours()}:00`, element.main.temp, element.main.feels_like, element.weather[0].description, element.weather[0].icon)
 
-        if (element.main.temp_max > fiveThreeData.Day0.dayHigh || fiveThreeData.Day3.dayHigh == null) {
+        if (element.main.temp_max > fiveThreeData.Day3.dayHigh || fiveThreeData.Day3.dayHigh == null) {
           fiveThreeData.Day3.dayHigh = element.main.temp_max
         }
         if (element.main.temp_min < fiveThreeData.Day3.dayLow || fiveThreeData.Day3.dayLow == null) {
@@ -146,7 +170,7 @@ async function getFiveThreeData() {
 
         let day4Forecast = new dayForecast(`${date.getHours()}:00`, element.main.temp, element.main.feels_like, element.weather[0].description, element.weather[0].icon)
 
-        if (element.main.temp_max > fiveThreeData.Day0.dayHigh || fiveThreeData.Day4.dayHigh == null) {
+        if (element.main.temp_max > fiveThreeData.Day4.dayHigh || fiveThreeData.Day4.dayHigh == null) {
           fiveThreeData.Day4.dayHigh = element.main.temp_max
         }
         if (element.main.temp_min < fiveThreeData.Day4.dayLow || fiveThreeData.Day4.dayLow == null) {
@@ -162,6 +186,7 @@ async function getFiveThreeData() {
 
   return fiveThreeData
 }
+
 
 
 const data = await getFiveThreeData()

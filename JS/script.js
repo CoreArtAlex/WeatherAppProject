@@ -2,6 +2,16 @@ import data from "./fiveThreeData.js"
 import createHourCards from "./hourcardCreator.js"
 
 
+
+const capitalize = (string) => {
+      let arr = string.split(" ")
+      for (let i = 0; i < arr.length; i++) {
+            arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+      }
+      const result = arr.join(' ')
+      return result
+}
+
 const dataObject = Object.values(data)[0]
 console.log(dataObject)
 
@@ -18,7 +28,7 @@ const assignDayValues = (dayNumber, dayObject) => {
       document.querySelector(`#day-${dayNumber}-low`).innerHTML = dayObject.dayLow
       document.querySelector(`#day-${dayNumber}-day`).innerHTML = dayObject.day
       document.querySelector(`#day-${dayNumber}-date`).innerHTML = dayObject.date
-      document.querySelector(`#day-${dayNumber}-description`).innerHTML = Object.values(dayObject)[4].description
+      document.querySelector(`#day-${dayNumber}-description`).innerHTML = capitalize(Object.values(dayObject)[4].description)
       document.querySelector(`#day-${dayNumber}-icon`).setAttribute('src', `http://openweathermap.org/img/wn/${Object.values(dayObject)[4].icon}@2x.png`)
 }
 
@@ -26,9 +36,9 @@ const assignHourValues = (array) => {
       for (let i = 0; i < array.length; i++) {
             document.querySelector(`#h${i}-time`).innerHTML = array[i].time
             document.querySelector(`#h${i}-icon`).setAttribute('src', `http://openweathermap.org/img/wn/${array[i].icon}@2x.png`)
-            document.querySelector(`#h${i}-temp`).innerHTML = array[i].temp + '°C'
-            document.querySelector(`#h${i}-description`).innerHTML = array[i].description
-            document.querySelector(`#h${i}-feelsLike`).innerHTML = array[i].feelsLike + '°C'
+            document.querySelector(`#h${i}-temp`).innerHTML = ': ' + array[i].temp + '°C'
+            document.querySelector(`#h${i}-description`).innerHTML = capitalize(array[i].description)
+            document.querySelector(`#h${i}-feelsLike`).innerHTML = ': '+ array[i].feelsLike + '°C'
 
       }
 }
@@ -50,7 +60,7 @@ let hourValDay4 = Object.values(dataObject.Day4).slice(4)
 day0Card.addEventListener('click', (e) => {
       e.preventDefault();
       hourCardContainer.innerHTML = ''
-      for(let i=0; i<hourValDay0.length; i++){
+      for (let i = 0; i < hourValDay0.length; i++) {
             new createHourCards(hourCardContainer, i)
       }
       assignHourValues(hourValDay0)
@@ -59,7 +69,7 @@ day0Card.addEventListener('click', (e) => {
 day1Card.addEventListener('click', (e) => {
       e.preventDefault();
       hourCardContainer.innerHTML = ''
-      for(let i=0; i<hourValDay1.length; i++){
+      for (let i = 0; i < hourValDay1.length; i++) {
             new createHourCards(hourCardContainer, i)
       }
       assignHourValues(hourValDay1)
@@ -68,7 +78,7 @@ day1Card.addEventListener('click', (e) => {
 day2Card.addEventListener('click', (e) => {
       e.preventDefault();
       hourCardContainer.innerHTML = ''
-      for(let i=0; i<hourValDay2.length; i++){
+      for (let i = 0; i < hourValDay2.length; i++) {
             new createHourCards(hourCardContainer, i)
       }
       assignHourValues(hourValDay2)
@@ -77,7 +87,7 @@ day2Card.addEventListener('click', (e) => {
 day3Card.addEventListener('click', (e) => {
       e.preventDefault();
       hourCardContainer.innerHTML = ''
-      for(let i=0; i<hourValDay3.length; i++){
+      for (let i = 0; i < hourValDay3.length; i++) {
             new createHourCards(hourCardContainer, i)
       }
       assignHourValues(hourValDay3)
@@ -86,7 +96,7 @@ day3Card.addEventListener('click', (e) => {
 day4Card.addEventListener('click', (e) => {
       e.preventDefault();
       hourCardContainer.innerHTML = ''
-      for(let i=0; i<hourValDay4.length; i++){
+      for (let i = 0; i < hourValDay4.length; i++) {
             new createHourCards(hourCardContainer, i)
       }
       assignHourValues(hourValDay4)
