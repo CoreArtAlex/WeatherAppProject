@@ -102,3 +102,4 @@ document.getElementById("wind-degree").innerHTML = "Wind Degree:" + currentWeath
 document.getElementById("wind-speed").innerHTML = "Wind Speed:" + currentWeatherData[5];
 document.getElementById("visibility").innerHTML = "Visibility:" + currentWeatherData[6];
 document.getElementById("humidity").innerHTML = "Humidity:" + currentWeatherData[7];
+
