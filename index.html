@@ -8,19 +8,19 @@
   <title>Weather App </title>
 </head>
 <body>
-  <div class="container">
+  <div class="container-menu">
     <div>
       DropDown
     </div>
     <div class="search-bar">
-        <input type="search" id="input">
+        <input class="input" type="search" id="input">
     </div>
   </div>
   <div class="container-currentWeather">
     <h4 id="city-name">City Name</h4>
     <h1 id="main-temp">Main Temp</h1>
-    <h6 id="current-condition">Current Condition</h6>
-    <ul id="current-weather-data">
+    <h6 class="current-condition" id="current-condition">Current Condition</h6>
+    <ul class="current-weather-data" id="current-weather-data">
       <li id="feels-like">Feel Like</li>
       <li id="wind-degree">Wind Degree</li>
       <li id="wind-speed">Wind Speed</li>
@@ -33,7 +33,7 @@
   </div>
   <script type="module" src="/JS/currentWeather.js"></script>
   <script async
-    src="https://maps.googleapis.com/maps/api/js?key=[API KEY GOES HERE]&libraries=places">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlBJnuYx0rG4Vvj3nF28dSRqHV1gSb90c&libraries=places">
   </script>
 </body>
 </html>
