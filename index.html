@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module" src="./JS/script.js" defer></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <link rel="stylesheet" href="./SCSS/styles.css">
-  <title>Weather App </title>
+  <title>Weather App</title>
 </head>
+
 <body>
   <div class="container-menu">
-    <div>
-      DropDown
+  <header class="container d-flex justify-content-between">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Favorite Cities
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="favorite-cities-list">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
     </div>
+    <div class="btn btn-warning" id="fav-btn">Favorite</div>
+  </header>
+    
     <div class="search-bar">
         <input class="input" type="search" id="input">
     </div>
@@ -28,12 +44,130 @@
       <li id="humidity">Humidity</li>
     </ul>
   </div>
-  <div class="container">
-    3 to 5 Days
+  
+  <div class="day-container container-fluid d-flex justify-content-center gap-3 mt-3">
+
+    <a href="#" class="day col-2 bg-primary text-light text-decoration-none" id="day-0">
+      <div class="row">
+        <div class="col-12 d-flex align-items-center justify-content-center">
+          <span id="day-0-day"></span> &nbsp; <span id="day-0-date"></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col d-flex justify-content-center">
+          <img id="day-0-icon" src="" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 d-flex justify-content-center">High: &nbsp; <span id="day-0-hi"></span> &nbsp; °C</div>
+        <div class="col-6 d-flex justify-content-center">Low: &nbsp;<span id="day-0-low"></span> &nbsp;°C</div>
+      </div>
+      <div class="row">
+        <div class="col-12 d-flex align-items-center justify-content-center">
+          <span id="day-0-description"></span>
+        </div>
+      </div>
+    </a>
+
+    <a href="#" class="day col-2 bg-secondary text-light text-decoration-none" id="day-1">
+      <div class="row">
+        <div class="col-12 d-flex align-items-center justify-content-center">
+          <span id="day-1-day"></span> &nbsp; <span id="day-1-date"></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col d-flex justify-content-center">
+          <img id="day-1-icon" src="" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 d-flex justify-content-center">High: &nbsp; <span id="day-1-hi"></span>&nbsp;°C</div>
+        <div class="col-6 d-flex justify-content-center">Low: &nbsp;<span id="day-1-low"></span>&nbsp;°C</div>
+      </div>
+      <div class="row">
+        <div class="col-12 d-flex align-items-center justify-content-center">
+          <span id="day-1-description"></span>
+        </div>
+      </div>
+    </a>
+
+    <a href="#" class="day col-2 bg-primary text-light text-decoration-none" id="day-2">
+      <div class="row">
+        <div class="col-12 d-flex align-items-center justify-content-center">
+          <span id="day-2-day"></span> &nbsp; <span id="day-2-date"></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col d-flex justify-content-center">
+          <img id="day-2-icon" src="" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 d-flex justify-content-center">High: &nbsp; <span id="day-2-hi"></span>&nbsp;°C</div>
+        <div class="col-6 d-flex justify-content-center">Low: &nbsp;<span id="day-2-low"></span>&nbsp;°C</div>
+      </div>
+      <div class="row">
+        <div class="col-12 d-flex align-items-center justify-content-center">
+          <span id="day-2-description"></span>
+        </div>
+      </div>
+    </a>
+
+    <a href="#" class="day col-2 bg-secondary text-light text-decoration-none" id="day-3">
+      <div class="row">
+        <div class="col-12 d-flex align-items-center justify-content-center">
+          <span id="day-3-day"></span> &nbsp; <span id="day-3-date"></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col d-flex justify-content-center">
+          <img id="day-3-icon" src="" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 d-flex justify-content-center">High: &nbsp; <span id="day-3-hi"></span>&nbsp;°C</div>
+        <div class="col-6 d-flex justify-content-center">Low: &nbsp;<span id="day-3-low"></span>&nbsp;°C</div>
+      </div>
+      <div class="row">
+        <div class="col-12 d-flex align-items-center justify-content-center">
+          <span id="day-3-description"></span>
+        </div>
+      </div>
+    </a>
+
+    <a href="#" class="day col-2 bg-primary text-light text-decoration-none" id="day-4">
+      <div class="row">
+        <div class="col-12 d-flex align-items-center justify-content-center">
+          <span id="day-4-day"></span> &nbsp; <span id="day-4-date"></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col d-flex justify-content-center">
+          <img id="day-4-icon" src="" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 d-flex justify-content-center">High: &nbsp; <span id="day-4-hi"></span>&nbsp;°C</div>
+        <div class="col-6 d-flex justify-content-center">Low: &nbsp;<span id="day-4-low"></span>&nbsp;°C</div>
+      </div>
+      <div class="row">
+        <div class="col-12 d-flex align-items-center justify-content-center">
+          <span id="day-4-description"></span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <div class="container-fluid d-flex justify-content-center align-content-center mt-3 gap-3" id="hour-card-container">
   </div>
   <script type="module" src="/JS/currentWeather.js"></script>
   <script async
     src="https://maps.googleapis.com/maps/api/js?key=[KEY GOES HERE]&libraries=places">
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
 </body>
+
+
+
 </html>
