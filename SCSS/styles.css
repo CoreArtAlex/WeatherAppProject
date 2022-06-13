@@ -1,1 +1,53 @@
-/*# sourceMappingURL=styles.css.map */
+
+@import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Cookie&family=Courgette&family=Montserrat:wght@100&family=Nunito+Sans:wght@200&display=swap");
+.container-currentWeather {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.current-weather-data {
+  text-decoration: none;
+  list-style: none;
+}
+
+.input {
+  color: black;
+  margin: 0%;
+  padding: 0%;
+}
+
+.container-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.container-currentWeather {
+  margin: auto;
+  padding: 5%;
+}
+
+.current-weather-data {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+* {
+  padding: 0px;
+  margin: 10px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  color: antiquewhite;
+  background: url(../SCSS/IMAGES/clear.jpg) no-repeat bottom center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+body {
+  background-color: hsl(208deg, 80%, 10%);
+}/*# sourceMappingURL=styles.css.map */
