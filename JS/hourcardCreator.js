@@ -19,34 +19,36 @@ export default class createHourCards{
   constructor(container, hourNumber){
 
     this.#time = document.createElement('div')
-    this.#time.classList.add('col-12', 'd-flex', 'justify-content-center')
+    this.#time.classList.add('col', 'd-flex', 'justify-content-center')
     this.#time.innerHTML = 'Time &nbsp;'
     this.#timeSpan = document.createElement('span')
     this.#timeSpan.id = `h${hourNumber}-time`
     this.#time.appendChild(this.#timeSpan)
 
     this.#icon = document.createElement('div')
-    this.#icon.classList.add('col-12', 'd-flex', 'justify-content-center')
+    this.#icon.classList.add('col', 'd-flex', 'justify-content-center')
     this.#iconImage = document.createElement('img')
     this.#iconImage.id = `h${hourNumber}-icon`
     this.#icon.appendChild(this.#iconImage)
 
     this.#temp = document.createElement('div')
-    this.#temp.classList.add('col-12', 'd-flex', 'justify-content-center')
+    this.#temp.classList.add('col', 'd-flex', 'justify-content-center')
     this.#temp.innerHTML = 'Temp'
     this.#tempSpan = document.createElement('span')
+    this.#tempSpan.classList.add('m-0')
     this.#tempSpan.id = `h${hourNumber}-temp`
     this.#temp.appendChild(this.#tempSpan)
 
     this.#feelsLike = document.createElement('div')
-    this.#feelsLike.classList.add('col-12', 'd-flex', 'justify-content-center')
+    this.#feelsLike.classList.add('col', 'd-flex', 'justify-content-center')
     this.#feelsLike.innerHTML = 'Feels like'
     this.#feelsLikeSpan = document.createElement('span')
+    this.#feelsLikeSpan.classList.add('m-0')
     this.#feelsLikeSpan.id = `h${hourNumber}-feelsLike`
     this.#feelsLike.appendChild(this.#feelsLikeSpan)
 
     this.#description = document.createElement('div')
-    this.#description.classList.add('col-12', 'd-flex', 'justify-content-center')
+    this.#description.classList.add('col', 'd-flex', 'justify-content-center')
     this.#descriptionSpan = document.createElement('span')
     this.#descriptionSpan.id = `h${hourNumber}-description`
     this.#description.appendChild(this.#descriptionSpan)
@@ -73,7 +75,7 @@ export default class createHourCards{
     this.#descriptionRow.appendChild(this.#description)
 
     this.#mainContainer = document.createElement('div')
-    this.#mainContainer.classList.add('col', 'bg-dark', 'text-light', 'm-2')
+    this.#mainContainer.classList.add('col-sm-12', 'col-md-auto', 'bg-dark', 'text-light')
     this.#mainContainer.id = `h${hourNumber}`
 
     this.#mainContainer.appendChild(this.#timeRow)
